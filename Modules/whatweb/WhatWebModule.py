@@ -7,7 +7,11 @@ is_stealth = False
 is_aggressive = False
 is_heavy = False
 
+prefix_command = "whatweb "
 command_str = "whatweb "
 
-def execute_Command():
-    os.system(command_str + target)
+def command_builder():
+    command_str = prefix_command
+
+def execute_command():
+    os.system(command_str)

@@ -7,5 +7,5 @@ gui_TK= tk.Tk()
 def start():
     gui_TK.minsize(500,500)
     gui_TK.geometry("1000x500")
-    gui_whatweb.drawButtons(gui_TK)
+    gui_whatweb.drawGUI(gui_TK)
     gui_TK.mainloop()
