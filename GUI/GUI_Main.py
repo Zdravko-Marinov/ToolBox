@@ -1,11 +1,11 @@
 from curses import window
 import tkinter as tk
-import Modules.Modules.nmap.NmapModule as nmap
-import Modules.Modules.whatweb.WhatWebModule as whatWeb
+import GUI.GUI_WhatWeb as gui_whatweb
 
-guiT= tk.Tk()
+gui_TK= tk.Tk()
 
 def start():
-    guiT.minsize(500,500)
-    guiT.geometry("1000x500")
-    guiT.mainloop()
+    gui_TK.minsize(500,500)
+    gui_TK.geometry("1000x500")
+    gui_whatweb.drawButtons(gui_TK)
+    gui_TK.mainloop()
