@@ -1,3 +1,4 @@
+from re import I
 from sqlite3 import Row
 import tkinter as tk
 import weakref
@@ -52,4 +53,3 @@ def drawGUI(root):
 
     empty_space(root,0,7)
     tk.Checkbutton(root,text= "Save Report",command=swtichBool,variable=exportFile).grid(column=1,row=8)
-    
