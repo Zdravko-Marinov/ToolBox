@@ -16,6 +16,8 @@ def swtichBool():
     whatweb.is_heavy = is_heavyVar.get()
     whatweb.exportFile = exportFile.get()
 
+
+# to do try to get rid of the global variables
 def initValues():
     global is_stealthVar
     is_stealthVar = tk.BooleanVar()
