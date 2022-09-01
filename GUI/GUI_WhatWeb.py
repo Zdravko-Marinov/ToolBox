@@ -1,20 +1,19 @@
-from re import I
-from sqlite3 import Row
 import tkinter as tk
-import weakref
 import Modules.whatweb.WhatWebModule as whatweb
 
 def empty_space(_root,_column,_row):
     tk.Label(_root,text=" ").grid(column=_column,row=_row)
 
+#Function that will pass all the values from fields and execute command
 def enterValue():
-    whatweb.target = targetVar.get()
+    whatweb.target = targetVar.get() # set the target we have typed out 
+    whatweb.command_builder() # build the command and execute
 
+#Function for switching on and off the options
 def swtichBool():
     whatweb.is_stealth = is_stealthVar.get()
     whatweb.is_aggressive = is_agressiveVar.get()
     whatweb.is_heavy = is_heavyVar.get()
-    whatweb.exportFile = exportFile.get()
 
 
 # to do try to get rid of the global variables
@@ -34,6 +33,7 @@ def initValues():
     global exportFile
     exportFile = tk.BooleanVar()
 
+#Function that will be called from Main GUI to draw all the elements
 def drawGUI(root):
     initValues()
     tk.Label(root,text="WhatWeb").grid(column=1,row=0)
@@ -52,6 +52,3 @@ def drawGUI(root):
     tk.Checkbutton(root,text= "Stealth",command=swtichBool,variable=is_stealthVar).grid(column=0,row=6)
     tk.Checkbutton(root,text= "Agressive",command=swtichBool,variable=is_agressiveVar).grid(column=1,row=6)
     tk.Checkbutton(root,text= "Heavy",command=swtichBool,variable=is_heavyVar).grid(column=2,row=6)
-
-    empty_space(root,0,7)
-    tk.Checkbutton(root,text= "Save Report",command=swtichBool,variable=exportFile).grid(column=1,row=8)
