@@ -1,4 +1,6 @@
-import os
+import subprocess as sp
+import GUI.GUI_Output as gui_Output
+
 
 #Class with variables to use
 class Vars:
@@ -14,13 +16,15 @@ target = "" # ip url etc
 is_stealth = False
 is_aggressive = False
 is_heavy = False
-
 prefix_command = "whatweb "
+
+masterRoot = None
 
 
 def execute_command():
-    os.system(Vars_.command_str)
-    print(Vars_.command_str)
+    output = sp.getoutput(Vars_.command_str)
+    gui_Output.create_window(masterRoot,"WhatWeb",target,str(output))
+    print("what is this shit " + output)
 
 #Function for setting up the scan mode
 def scan_mode():
@@ -46,6 +50,8 @@ def command_builder():
 
 # Add Scan mode
     Vars_.command_str += scan_mode()
+
+    Vars_.command_str += " --color=never" # Disable color as it bugs out the GUI output
 
     if(Vars_.on_error == False):
         execute_command()

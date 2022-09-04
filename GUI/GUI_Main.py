@@ -1,6 +1,3 @@
-from ast import Lambda
-from curses import window
-from threading import main_thread
 import tkinter as tk
 from tkinter import Frame, scrolledtext
 import GUI.GUI_WhatWeb as gui_whatweb
@@ -24,6 +21,7 @@ element_holder = Frame(my_canvas)
 my_canvas.create_window((0,0),window=element_holder,anchor="nw")
 
 def start():
+    gui_TK.title("ToolBox")
     gui_TK.minsize(500,500)
     gui_TK.geometry("1000x500")
     gui_whatweb.drawGUI(element_holder)

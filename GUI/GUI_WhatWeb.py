@@ -7,6 +7,7 @@ class Vars:
         self.is_agressiveVar = None
         self.is_heavyVar = None
         self.targetVar = None
+        self.root = None
 
         
 Vars_ = Vars()
@@ -17,6 +18,7 @@ def empty_space(_root,_column,_row):
 #Function that will pass all the values from fields and execute command
 def enterValue():
     whatweb.target = Vars_.targetVar.get() # set the target we have typed out 
+    whatweb.masterRoot = Vars_.root
     whatweb.command_builder() # build the command and execute
 
 #Function for switching on and off the options
@@ -26,7 +28,7 @@ def swtichBool():
     whatweb.is_heavy = Vars_.is_heavyVar.get()
 
 
-# to do try to get rid of the global variables
+#Funtion that will use the variables to set up the tk vars
 def initValues():
     Vars_.is_stealthVar = tk.BooleanVar()
 
@@ -38,7 +40,10 @@ def initValues():
 
 #Function that will be called from Main GUI to draw all the elements
 def drawGUI(root):
+
     initValues()
+    Vars_.root = root
+
     tk.Label(root,text="WhatWeb").grid(column=1,row=0)
 
     empty_space(root,0,1)
