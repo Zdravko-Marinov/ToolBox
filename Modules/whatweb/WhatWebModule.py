@@ -1,6 +1,6 @@
 import subprocess as sp
 import GUI.GUI_Output as gui_Output
-
+from threading import Thread
 
 #Class with variables to use
 class Vars:
@@ -24,7 +24,6 @@ masterRoot = None
 def execute_command():
     output = sp.getoutput(Vars_.command_str)
     gui_Output.create_window(masterRoot,"WhatWeb",target,str(output))
-    print("what is this shit " + output)
 
 #Function for setting up the scan mode
 def scan_mode():
@@ -53,5 +52,5 @@ def command_builder():
 
     Vars_.command_str += " --color=never" # Disable color as it bugs out the GUI output
 
-    if(Vars_.on_error == False):
-        execute_command()
+    if(Vars_.on_error == False): #No error go execute command
+        Thread(target=execute_command).start()
