@@ -2,12 +2,14 @@ from os import stat
 import tkinter as tk
 from tkinter import Frame, scrolledtext
 from tkinter import filedialog
+from datetime import datetime
 
-output_str = ""
-
-def export_file():
+def export_file(toolName,target, output_str):
     path = filedialog.askdirectory()
-    
+    timeNow = datetime.now()
+    reportFile = open(path + "/" + toolName + " " + target + " " + str(timeNow),"w+")
+    reportFile.write(output_str)
+    reportFile.close
 
 def create_window(root,tool_name,target,output):
     newWindow = tk.Toplevel(root)
@@ -39,4 +41,4 @@ def create_window(root,tool_name,target,output):
     text_box.insert(tk.INSERT,output)
     text_box.configure(state="disabled")
 
-    tk.Button(element_holder,text="Export File",command=export_file).grid(column=1,row=1)
+    tk.Button(element_holder,text="Export File",command= lambda: export_file(tool_name,target,output)).grid(column=1,row=1)
