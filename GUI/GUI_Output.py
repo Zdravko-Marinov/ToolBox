@@ -7,7 +7,6 @@ from datetime import datetime
 def export_file(toolName,target, output_str):
     path = filedialog.askdirectory()
     timeNow = datetime.now()
-    
     reportFile = open(path + "/" + toolName + " " + target + " " + str(timeNow),"w+")
     reportFile.write(output_str)
     reportFile.close
